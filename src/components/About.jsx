@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { User, Target, Compass, Award, CheckCircle2, ChevronRight, Briefcase, Camera, X } from 'lucide-react';
-import mdPortrait from '../assets/md_portrait.png';
+import mdPortrait from '../assets/Mihir-Kumar.jpeg';
 import drive1 from '../assets/drive_1.jpg';
 import drive2 from '../assets/drive_2.jpg';
 import drive3 from '../assets/drive_3.jpg';

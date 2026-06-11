@@ -1,16 +1,20 @@
-import React from 'react';
-import { ShieldCheck, Landmark } from 'lucide-react';
+import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
+import { ShieldCheck, Landmark, Eye, X, ZoomIn } from 'lucide-react';
 import logoNaps from '../assets/logo_naps.png';
 import logoUdyam from '../assets/logo_udyam.png';
 import logoSkill from '../assets/logo_skill.png';
+import udyamCertificate from '../assets/udyam_certificate.jpg';
 
 export default function GovernmentBadges() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const certifications = [
     {
       title: 'Udyam Aadhar / MSME',
       authority: 'Ministry of MSME, Government of India',
       status: 'Registered Enterprise',
-      scheme: 'UDYAM-OR-02-XXXXXXX',
+      scheme: 'UDYAM-OD-11-0015252',
       details: 'Registered under the Micro, Small & Medium Enterprises (MSME) development framework. This validates our operational integrity, enabling participation in government procurements, digital initiatives, and national software tenders.',
       image: logoUdyam
     },
@@ -50,45 +54,83 @@ export default function GovernmentBadges() {
           </p>
         </div>
 
-        {/* Badges Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {certifications.map((cert, index) => (
-            <div 
-              key={index} 
-              className="glass-card p-8 rounded-2xl border border-white/5 text-left flex flex-col justify-between"
-            >
-              <div>
-                {/* Logo Image and Verification Header */}
-                <div className="flex items-start justify-between mb-6">
-                  <div className="p-3 rounded-xl bg-white/5 border border-white/10 w-32 h-20 flex items-center justify-center overflow-hidden">
-                    <img 
-                      src={cert.image} 
-                      alt={cert.title} 
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="flex flex-col items-end text-right">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                      <ShieldCheck className="w-3.5 h-3.5" />
+        {/* 2-Column Responsive Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
+          
+          {/* Left Column: Certifications Stack (8 cols) */}
+          <div className="lg:col-span-8 flex flex-col gap-6">
+            {certifications.map((cert, index) => (
+              <div 
+                key={index} 
+                className="glass-card p-6 rounded-2xl border border-white/5 text-left flex flex-col sm:flex-row gap-6 items-start hover:border-brand-accent/30 transition-all duration-300"
+              >
+                <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 w-28 h-20 flex items-center justify-center shrink-0 overflow-hidden">
+                  <img 
+                    src={cert.image} 
+                    alt={cert.title} 
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+                <div className="flex-grow">
+                  <div className="flex items-center justify-between gap-2 flex-wrap mb-2">
+                    <h3 className="text-lg font-bold text-white leading-tight">{cert.title}</h3>
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-bold tracking-wide uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      <ShieldCheck className="w-3 h-3" />
                       Verified
                     </span>
-                    <span className="text-[10px] text-slate-500 font-mono mt-2">{cert.scheme}</span>
+                  </div>
+                  <p className="text-[10px] font-semibold text-brand-accent mb-2 uppercase tracking-wider">{cert.authority}</p>
+                  <p className="text-xs text-slate-300 font-light leading-relaxed mb-3">
+                    {cert.details}
+                  </p>
+                  <div className="flex items-center justify-between text-[10px] text-slate-500 border-t border-slate-800/60 pt-2">
+                    <span>Reg No: <span className="font-mono text-slate-400">{cert.scheme}</span></span>
+                    <span>Status: <span className="font-semibold text-slate-300">{cert.status}</span></span>
                   </div>
                 </div>
-
-                <h3 className="text-lg font-bold text-white mb-1">{cert.title}</h3>
-                <p className="text-xs font-semibold text-brand-accent mb-4 uppercase tracking-wider">{cert.authority}</p>
-                <p className="text-sm text-slate-300 font-light leading-relaxed">
-                  {cert.details}
-                </p>
               </div>
+            ))}
+          </div>
 
-              <div className="mt-8 border-t border-slate-800/60 pt-4 flex items-center justify-between text-xs">
-                <span className="text-slate-500">Classification</span>
-                <span className="font-semibold text-slate-300">{cert.status}</span>
+          {/* Right Column: Certificate Preview (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col justify-between glass-card p-6 rounded-2xl border border-white/5 text-left relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-brand-primary/10 blur-2xl pointer-events-none"></div>
+            
+            <div className="mb-4">
+              <h3 className="text-lg font-bold text-white mb-1">Registration Certificate</h3>
+              <p className="text-xs text-slate-400 font-light">Ministry of MSME, Govt of India</p>
+            </div>
+            
+            {/* Thumbnail Box */}
+            <div 
+              onClick={() => setIsModalOpen(true)}
+              className="relative rounded-xl overflow-hidden cursor-zoom-in border border-slate-800 bg-slate-950/40 group/thumb flex items-center justify-center aspect-[3/4] h-72 mx-auto transition-transform duration-300"
+            >
+              <img 
+                src={udyamCertificate} 
+                alt="Udyam Registration Certificate" 
+                className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/thumb:scale-[1.03] group-hover/thumb:brightness-90"
+              />
+              {/* Zoom Overlay on Hover */}
+              <div className="absolute inset-0 bg-slate-950/45 opacity-0 group-hover/thumb:opacity-100 transition-opacity flex flex-col items-center justify-center text-white gap-2">
+                <div className="p-3 bg-brand-primary/80 backdrop-blur-sm rounded-full text-white shadow-lg shadow-brand-primary/20 scale-90 group-hover/thumb:scale-100 transition-all duration-300">
+                  <ZoomIn className="w-5 h-5" />
+                </div>
+                <span className="text-xs font-semibold tracking-wider">Click to Preview</span>
               </div>
             </div>
-          ))}
+
+            <div className="mt-4 pt-4 border-t border-slate-800/60">
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="w-full flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-brand-primary/10 hover:bg-brand-primary/20 border border-brand-primary/20 text-brand-accent hover:text-white font-medium text-xs transition-all duration-200"
+              >
+                <Eye className="w-4 h-4" />
+                <span>View Full Certificate</span>
+              </button>
+            </div>
+          </div>
+
         </div>
 
         {/* Small trust banner */}
@@ -100,6 +142,53 @@ export default function GovernmentBadges() {
         </div>
 
       </div>
+
+      {/* Lightbox Modal */}
+      {isModalOpen && createPortal(
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950/90 backdrop-blur-md p-4 sm:p-6 transition-all">
+          {/* Close trigger background */}
+          <div className="absolute inset-0 cursor-default" onClick={() => setIsModalOpen(false)}></div>
+          
+          <div className="relative bg-slate-900 border border-slate-800 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl z-10">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-800">
+              <div className="text-left">
+                <h3 className="text-base sm:text-lg font-bold text-white">Udyam Registration Certificate</h3>
+                <p className="text-xs text-slate-500 font-mono">UDYAM-OD-11-0015252</p>
+              </div>
+              <button 
+                onClick={() => setIsModalOpen(false)}
+                className="p-2 rounded-xl bg-slate-800/60 border border-slate-700/60 hover:border-slate-500 text-slate-400 hover:text-white transition-all"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            {/* Modal Image container */}
+            <div className="flex-grow p-4 sm:p-6 overflow-y-auto bg-slate-950/50 flex items-center justify-center min-h-0">
+              <img 
+                src={udyamCertificate} 
+                alt="Udyam Registration Certificate Full View" 
+                className="max-h-[60vh] sm:max-h-[65vh] w-auto object-contain rounded-lg border border-slate-800 shadow-xl"
+              />
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-4 sm:p-5 border-t border-slate-800 bg-slate-900/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+              <span className="text-center sm:text-left">M/S Necteromni Technologies Private Limited</span>
+              <a 
+                href={udyamCertificate} 
+                download="Necteromni_Udyam_Certificate.jpg"
+                className="px-4 py-2 rounded-lg bg-brand-primary hover:bg-brand-secondary text-white font-semibold transition-all w-full sm:w-auto text-center"
+              >
+                Download File
+              </a>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </section>
   );
 }

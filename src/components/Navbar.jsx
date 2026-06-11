@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, MessageSquare } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,22 +37,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="relative w-10 h-10 bg-gradient-to-tr from-brand-primary to-brand-accent rounded-xl flex items-center justify-center shadow-md shadow-brand-primary/20 group-hover:scale-105 transition-transform duration-300">
-              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v-8l8 8v-8" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 16v-8l8 8v-8" stroke="url(#gradient-accent)" />
-                <defs>
-                  <linearGradient id="gradient-accent" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#06b6d4" />
-                    <stop offset="100%" stopColor="#3b82f6" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-wider text-white group-hover:text-brand-accent transition-colors">NECTEROMNI</span>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-slate-400 font-medium">Technologies</span>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="flex items-center justify-center h-12 overflow-hidden transition-all duration-300 group-hover:scale-[1.02]">
+              <img 
+                src={logoImg} 
+                alt="NECTEROMNI" 
+                className="h-22 w-auto object-contain max-w-none" 
+                style={{ filter: 'url(#remove-white)' }}
+              />
             </div>
           </Link>
 
@@ -144,6 +137,13 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      <svg width="0" height="0" style={{ position: 'absolute', zIndex: -1 }}>
+        <defs>
+          <filter id="remove-white">
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1 -1 -1 3 0" />
+          </filter>
+        </defs>
+      </svg>
     </nav>
   );
 }

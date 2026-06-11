@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUp, Phone, MapPin, Landmark } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -17,16 +18,16 @@ export default function Footer() {
           
           {/* Column 1: Brand & CIN */}
           <div className="lg:col-span-5 text-left space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-tr from-brand-primary to-brand-accent rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v-8l8 8v-8" />
-                </svg>
+            <div className="flex items-center space-x-3">
+              <div className="flex items-center justify-center h-12 overflow-hidden">
+                <img 
+                  src={logoImg} 
+                  alt="NECTEROMNI" 
+                  className="h-22 w-auto object-contain max-w-none" 
+                  style={{ filter: 'url(#remove-white)' }}
+                />
               </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold tracking-wider text-white">NECTEROMNI</span>
-                <span className="text-[8px] uppercase tracking-[0.2em] text-slate-400 font-semibold">Technologies</span>
-              </div>
+              
             </div>
             
             <p className="text-sm text-slate-400 font-light leading-relaxed max-w-sm">
@@ -36,7 +37,7 @@ export default function Footer() {
             <div className="space-y-1 pt-2">
               <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Registrations</span>
               <span className="text-xs font-mono text-slate-500 block">CIN: U72900OR2017PTC026956</span>
-              <span className="text-xs font-mono text-slate-500 block">Udyam: UDYAM-OR-02-XXXXXXX</span>
+              <span className="text-xs font-mono text-slate-500 block">Udyam: UDYAM-OD-11-0015252</span>
             </div>
           </div>
 
@@ -101,6 +102,13 @@ export default function Footer() {
         </div>
 
       </div>
+      <svg width="0" height="0" style={{ position: 'absolute', zIndex: -1 }}>
+        <defs>
+          <filter id="remove-white">
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1 -1 -1 3 0" />
+          </filter>
+        </defs>
+      </svg>
     </footer>
   );
 }
