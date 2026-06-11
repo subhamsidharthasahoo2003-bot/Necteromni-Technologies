@@ -12,6 +12,9 @@ import drive7 from '../assets/drive_7.jpg';
 import drive8 from '../assets/drive_8.jpg';
 import drive9 from '../assets/drive_9.jpg';
 import drive10 from '../assets/drive_10.jpg';
+import teamAshwath from '../assets/ashwath-singh.avif';
+import teamRishi from '../assets/rishi-gurbaxani.avif';
+import teamRasmita from '../assets/rasmita-tripathy.avif';
 
 export default function About() {
   const [activeImage, setActiveImage] = useState(null);
@@ -250,7 +253,130 @@ export default function About() {
             </div>
           </div>
 
-          {/* Section 3: Campus Drives & Academic Engagement Gallery */}
+          {/* Section 3: Our Core Team */}
+          <div className="pt-16 pb-6 border-t border-slate-800" id="about-team">
+            <div className="text-center max-w-3xl mx-auto mb-20">
+              <span className="text-xs uppercase tracking-[0.2em] font-semibold text-brand-accent">Executive Council</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">
+                Our Core Team
+              </h2>
+              <div className="w-12 h-1 bg-brand-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div className="space-y-20 max-w-5xl mx-auto">
+              
+              {/* Member 1: Ashwath Singh */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                {/* Portrait */}
+                <div className="lg:col-span-4 flex justify-center order-1 lg:order-1">
+                  <div className="relative group w-64 h-64 sm:w-72 sm:h-72">
+                    <div className="absolute -inset-1.5 bg-gradient-to-tr from-brand-accent to-brand-primary rounded-full opacity-40 blur-sm group-hover:opacity-75 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 border-2 border-brand-accent/20 rounded-full z-20"></div>
+                    <div className="relative w-full h-full rounded-full overflow-hidden bg-brand-carddark shadow-2xl z-10">
+                      <img 
+                        src={teamAshwath} 
+                        alt="Ashwath Singh - Director & Principal Consultant" 
+                        className="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-500"
+                      />
+                    </div>
+                  </div>
+                </div>
+                {/* Details */}
+                <div className="lg:col-span-8 text-left order-2 lg:order-2 space-y-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white">Ashwath Singh</h3>
+                    <p className="text-sm font-semibold text-brand-accent uppercase tracking-wider mt-1">Director & Principal Consultant</p>
+                  </div>
+                  <div className="text-slate-300 font-light text-sm leading-relaxed space-y-3">
+                    <p>
+                      Ashwath Singh is a seasoned leadership professional with nearly 22 years of experience across Human Resources, Training, Placement, government liaisoning, and project facilitation. An alumnus of IIM Ahmedabad (2004 batch), he brings a rare blend of strategic insight, policy understanding, and execution excellence.
+                    </p>
+                    <p>
+                      He has held several high-impact roles, including Ex-National Head at NSDC, where he coordinated skill development initiatives across all Indian states. His advisory and consulting engagements include NSDC, MSME, and HR Advisor roles with state governments such as Chhattisgarh, Maharashtra, Jharkhand, and Madhya Pradesh.
+                    </p>
+                    <p>
+                      Mr. Singh has also served as Innovation Advisor to the Hon'ble Minister of Road Transport & Highways and as Ex-General Secretary, Anti-Corruption Bureau India, under the leadership of Hon'ble Mr. M. S. Bitta.
+                    </p>
+                    <p>
+                      With strong working relationships across IAS officers, central and state ministries, and regulatory bodies PAN India, he has successfully facilitated greenfield projects, industry setups, and large-scale infrastructure initiatives. His expertise plays a critical role in ensuring seamless approvals, strategic stakeholder coordination, and timely execution for complex projects.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Member 2: Rishi Gurbaxani */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                {/* Portrait */}
+                <div className="lg:col-span-4 flex justify-center order-1 lg:order-2">
+                  <div className="relative group w-64 h-64 sm:w-72 sm:h-72">
+                    <div className="absolute -inset-1.5 bg-gradient-to-tr from-brand-accent to-brand-primary rounded-full opacity-40 blur-sm group-hover:opacity-75 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 border-2 border-brand-accent/20 rounded-full z-20"></div>
+                    <div className="relative w-full h-full rounded-full overflow-hidden bg-brand-carddark shadow-2xl z-10">
+                      <img 
+                        src={teamRishi} 
+                        alt="Rishi Gurbaxani - Operations Head" 
+                        className="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-500"
+                      />
+                    </div>
+                  </div>
+                </div>
+                {/* Details */}
+                <div className="lg:col-span-8 text-left order-2 lg:order-1 space-y-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white">Rishi Gurbaxani</h3>
+                    <p className="text-sm font-semibold text-brand-accent uppercase tracking-wider mt-1">Operations Head</p>
+                  </div>
+                  <div className="text-slate-300 font-light text-sm leading-relaxed space-y-3">
+                    <p>
+                      Rishi Gurbaxani is an accomplished operations and administration leader with nearly 22 years of experience managing large-scale organizational processes and teams. He has worked with renowned organizations such as Aditya Birla Group and Maruti Suzuki India, gaining deep exposure to operational excellence, compliance, and process optimization.
+                    </p>
+                    <p>
+                      Known for his hands-on leadership style and execution focus, he drives efficiency, cost optimization, and operational stability across the organization. His expertise ensures smooth day-to-day operations while supporting scalable growth and performance excellence.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Member 3: Er. Rasmita Tripathy */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                {/* Portrait */}
+                <div className="lg:col-span-4 flex justify-center order-1 lg:order-1">
+                  <div className="relative group w-64 h-64 sm:w-72 sm:h-72">
+                    <div className="absolute -inset-1.5 bg-gradient-to-tr from-brand-accent to-brand-primary rounded-full opacity-40 blur-sm group-hover:opacity-75 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 border-2 border-brand-accent/20 rounded-full z-20"></div>
+                    <div className="relative w-full h-full rounded-full overflow-hidden bg-brand-carddark shadow-2xl z-10">
+                      <img 
+                        src={teamRasmita} 
+                        alt="Er. Rasmita Tripathy - Technical & Academic Advisor" 
+                        className="w-full h-full object-cover object-center group-hover:scale-103 transition-transform duration-500"
+                      />
+                    </div>
+                  </div>
+                </div>
+                {/* Details */}
+                <div className="lg:col-span-8 text-left order-2 lg:order-2 space-y-4">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white">Er. Rasmita Tripathy</h3>
+                    <p className="text-sm font-semibold text-brand-accent uppercase tracking-wider mt-1">Technical & Academic Advisor</p>
+                  </div>
+                  <div className="text-slate-300 font-light text-sm leading-relaxed space-y-3">
+                    <p>
+                      Er. Rasmita Tripathy is a distinguished academic and technical professional with 12 years of teaching experience in Civil and Structural Engineering. She completed her M.Tech from NIT Rourkela (2012) and is currently pursuing her Ph.D. at KIIT University.
+                    </p>
+                    <p>
+                      As an Advisor to PlacementOdisha Skill Academy, she brings strong research-driven insights, curriculum design expertise, and academic leadership. Her contributions significantly enhance training quality, curriculum relevance, and industry alignment, ensuring that learners receive modern, technically strong, and industry-ready education.
+                    </p>
+                    <p>
+                      Her guidance reinforces the academy's commitment to quality technical education, practical exposure, and skill development for aspiring engineers across Odisha.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* Section 4: Campus Drives & Academic Engagement Gallery */}
           <div className="pt-12 border-t border-slate-800 text-left">
             <div className="max-w-3xl mb-10">
               <span className="text-xs uppercase tracking-[0.2em] font-semibold text-brand-accent">Outreach & Impact</span>
